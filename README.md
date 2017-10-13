@@ -1,6 +1,6 @@
 # EC2 Pricing Info
 
-Shows an easy-to-view and compare prices of Amazon Web Services EC2 instances across various AWS regions.
+Shows an easy-to-compare view of pricing info of Amazon Web Services EC2 instances across various AWS regions.
 
 ## Setting up for development
 
@@ -29,8 +29,8 @@ gulp serve
 gulp build
 ````
 
-This will generated a optimized build inside `dist` directory. You can deploy the contents of this directory to a static
-web host.
+This will generate an optimized build inside `dist` directory. You can deploy the contents of this directory to a static
+web server.
 
 ## Roadmap
 
