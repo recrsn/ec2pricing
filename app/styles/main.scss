@@ -13,7 +13,6 @@ $icon-font-path: '../fonts/';
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
   padding-bottom: 20px;
 }
 
@@ -23,6 +22,10 @@ body {
 .footer {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.top-padding {
+  padding-top: 20px;
 }
 
 /* Custom page header */

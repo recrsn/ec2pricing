@@ -16,6 +16,7 @@
 
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/loading.css">
     <!-- endbuild -->
 
   </head>
@@ -24,7 +25,11 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container">
+    <div class="progress" id="load-bar">
+      <div class="indeterminate"></div>
+    </div>
+
+    <div class="container top-padding">
       <div class="header">
         <h3 class="text-muted">EC2 Spot Pricing</h3>
       </div>
