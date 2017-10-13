@@ -67,6 +67,27 @@ body {
   }
 }
 
+/* Loading Layer */
+.loading-layer{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.22);
+  z-index: 10;
+}
+
+.loading-layer-wrapper{
+  background-color:white;
+  border: 1px solid #b3b3b3;
+  text-align: center;
+  padding: 30px 50px;
+  border-radius: 5px;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
