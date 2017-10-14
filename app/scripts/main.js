@@ -1,9 +1,12 @@
 $(function () {
   let pricingData = [];
+  let currencies = ['USD'];
+  let rates = {};
 
   let $region = $('#region-select');
   let $type = $('#type-select');
   let $size = $('#size-select');
+  let $currency = $('#currency-select');
 
   let loadData = function (data) {
     for (let region of data.config.regions) {
@@ -20,7 +23,7 @@ $(function () {
     }
   };
 
-  let render = function (values) {
+  let render = function (values, crrncs) {
     for (let region of values['region']) {
       $region.append('<option  value="' + region + '">' + region + '</option>');
     }
@@ -30,7 +33,11 @@ $(function () {
     for (let size of values['size']) {
       $size.append('<option  value="' + size + '">' + size + '</option>');
     }
+    for (let crrncy of crrncs) {
+      $currency.append('<option  value="' + crrncy + '">' + crrncy + '</option>');
+    }
   };
+
   let createFilter = function () {
     let where = {};
     if ($region.val() != 'all') {
@@ -48,16 +55,18 @@ $(function () {
   window.callback = function (data) {
     loadData(data);
     let uniqueValues = unique(pricingData, ['region', 'type', 'size']);
-    render(uniqueValues);
+    render(uniqueValues, currencies);
 
     let $data = $('#pricing-data');
     $('select').on('change', function () {
       $data.empty();
       let where = createFilter();
       let records = filter(pricingData, where);
-
+      let factor = 0;
+      $currency.val() === 'USD' ? factor = 1 : factor = rates[$currency.val()]
       for (let record of records) {
-        $data.append('<tr><td>' + record.region + '</td><td>' + record.type + '</td><td>' + record.size + '</td><td>' + record.price + '</td></tr>');
+        let price = parseFloat(record.price) * factor
+        $data.append('<tr><td>' + record.region + '</td><td>' + record.type + '</td><td>' + record.size + '</td><td>' + price.toFixed(4) + ' ' + $currency.val() + '</td></tr>');
       }
     });
   };
@@ -86,5 +95,10 @@ $(function () {
     })
   };
   //load ec2 pricing data
-  $.getScript('https://spot-price.s3.amazonaws.com/spot.js');
+  $.get( 'http://api.fixer.io/latest?base=USD', function( data ) {
+    rates = data.rates;
+    currencies = Object.keys(rates);
+  }).always(function() {
+    $.getScript('https://spot-price.s3.amazonaws.com/spot.js');
+  });
 });
