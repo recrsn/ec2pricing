@@ -11,6 +11,7 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -34,7 +35,7 @@
           <div class="col-xs-12 col-md-6 col-lg-4">
             <div class="form-group">
               <label for="region-select">Region</label>
-              <select class="form-control" id="region-select">
+              <select class="form-control selectpicker" id="region-select" data-live-search="true">
                 <option selected value="all">All</option>
               </select>
             </div>
@@ -42,7 +43,7 @@
           <div class="col-xs-12 col-md-6 col-lg-4">
             <div class="form-group">
               <label for="type-select">Type</label>
-              <select class="form-control" id="type-select">
+              <select class="form-control selectpicker" id="type-select" data-live-search="true">
                 <option selected value="all">All</option>
               </select>
             </div>
@@ -50,7 +51,7 @@
           <div class="col-xs-12 col-lg-4">
             <div class="form-group">
               <label for="size-select">Size</label>
-              <select class="form-control" id="size-select">
+              <select class="form-control selectpicker" id="size-select" data-live-search="true">
                 <option selected value="all">All</option>
               </select>
             </div>
@@ -77,6 +78,7 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
