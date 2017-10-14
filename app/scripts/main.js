@@ -6,7 +6,7 @@ $(function () {
   let $size = $('#size-select');
 
   let loadData = function (data) {
-    document.getElementById('load-bar').style.display = 'none';
+    document.getElementById('loading-bar').style.display = 'none';
     for (let region of data.config.regions) {
       for (let instanceType of region.instanceTypes) {
         for (let size of instanceType.sizes) {
