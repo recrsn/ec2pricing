@@ -7,15 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ec2pricing</title>
 
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
 
   <!-- build:css styles/vendor.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="/bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
-  <!-- endbower -->
-  <!-- endbuild -->
-
-  <!-- build:css styles/vendor.css -->
-  <!-- bower:css -->
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -44,57 +41,68 @@
                 <option selected value="all">All</option>
               </select>
           </div>
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="form-group">
-              <label for="type-select">Type</label>
-              <select class="form-control selectpicker" id="type-select" data-live-search="true">
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <div class="form-group">
+            <label for="type-select">Type</label>
+            <select class="form-control selectpicker" id="type-select" data-live-search="true">
                 <option selected value="all">All</option>
               </select>
-            </div>
-            <div class="col-xs-12 col-lg-4">
-              <div class="form-group">
-                <label for="size-select">Size</label>
-                <select class="form-control selectpicker" id="size-select" data-live-search="true">
-                <option selected value="all">All</option>
-              </select>
-              </div>
-            </div>
           </div>
-          <div class="row">
-            <table class="col-xs-12 table">
-              <thead>
-                <tr id="sort">
-                  <th data-field="region">Region <span class="glyphicon glyphicon-sort"></span></th>
-                  <th data-field="type">Type <span class="glyphicon glyphicon-sort"></span></th>
-                  <th data-field="size">Size <span class="glyphicon glyphicon-sort"></span></th>
-                  <th data-field="price">Price <span class="glyphicon glyphicon-sort"></span></th>
-                </tr>
-              </thead>
-              <tbody id="pricing-data">
-
-              </tbody>
-            </table>
+        </div>
+        <div class="col-xs-12 col-lg-4">
+          <div class="form-group">
+            <label for="size-select">Size</label>
+            <select class="form-control selectpicker" id="size-select" data-live-search="true">
+                <option selected value="all">All</option>
+              </select>
           </div>
         </div>
       </div>
+      <div class="row">
+        <table class="col-xs-12 table">
+          <thead>
+            <tr id="table-headers">
+              <th data-field="region">Region <span class="glyphicon glyphicon-sort"></span></th>
+              <th data-field="type">Type <span class="glyphicon glyphicon-sort"></span></th>
+              <th data-field="size">Size <span class="glyphicon glyphicon-sort"></span></th>
+              <th data-field="price">Price <span class="glyphicon glyphicon-sort"></span></th>
+            </tr>
+          </thead>
+          <tbody id="pricing-data">
 
-      <!-- build:js scripts/vendor.js -->
-      <!-- bower:js -->
-      <script src="/bower_components/jquery/dist/jquery.js"></script>
-      <!-- endbower -->
-      <!-- endbuild -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-      <!-- build:js scripts/vendor.js -->
-      <!-- bower:js -->
-      <script src="/bower_components/jquery/dist/jquery.js"></script>
-      <script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-      <!-- endbower -->
-      <!-- endbuild -->
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
-      <!-- build:js scripts/main.js -->
-      <script defer src="scripts/main.js"></script>
-      <!-- endbuild -->
-      <!-- script async defer src="https://spot-price.s3.amazonaws.com/spot.js">  </script -->
+  <!-- build:js scripts/plugins.js -->
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js scripts/main.js -->
+  <script defer src="scripts/main.js"></script>
+  <!-- endbuild -->
+  <!-- script async defer src="https://spot-price.s3.amazonaws.com/spot.js">  </script -->
 </body>
 
 </html>

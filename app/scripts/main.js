@@ -88,7 +88,7 @@ $(function() {
     renderOptions(uniqueValues);
     renderRows(pricingData);
 
-    $('#sort th').on('click', function() {
+    $('#table-headers th').on('click', function() {
       const where = createFilter();
       const records = filter(pricingData, where);
       const field = $(this).data('field');
