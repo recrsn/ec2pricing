@@ -1,113 +1,111 @@
 <!doctype html>
 <html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ec2pricing</title>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ec2pricing</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
 
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <!-- Place favicon.ico in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
 
-  <!-- build:css styles/vendor.css -->
-  <!-- bower:css -->
-  <!-- endbower -->
-  <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
 
-  <!-- build:css styles/main.css -->
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/loading.css">
-  <!-- endbuild -->
-
-</head>
-
-<body>
-  <!--[if lt IE 10]>
+  </head>
+  <body>
+    <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-  <div class="slider" id="loading-bar">
-    <div class="line"></div>
-    <div class="subline inc"></div>
-    <div class="subline dec"></div>
-  </div>
-
-  <div class="container top-padding">
-    <div class="header">
-      <h3 class="text-muted">EC2 Spot Pricing</h3>
+    
+    <div class="slider" id="loading-bar">
+      <div class="line"></div>
+      <div class="subline inc"></div>
+      <div class="subline dec"></div>
     </div>
 
-    <div class="pricing-table">
-      <div class="row">
-        <div class="col-xs-12 col-md-6 col-lg-4">
-          <div class="form-group">
-            <label for="region-select">Region</label>
-            <select class="form-control" id="region-select">
-              <option selected value="all">All</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-6 col-lg-4">
-          <div class="form-group">
-            <label for="type-select">Type</label>
-            <select class="form-control" id="type-select">
-              <option selected value="all">All</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-xs-12 col-lg-4">
-          <div class="form-group">
-            <label for="size-select">Size</label>
-            <select class="form-control" id="size-select">
-              <option selected value="all">All</option>
-            </select>
-          </div>
-        </div>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">EC2 Spot Pricing</h3>
       </div>
-      <div class="row">
-        <table class="col-xs-12 table">
-          <thead>
+
+      <div class="pricing-table">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+              <label for="region-select">Region</label>
+              <select class="form-control selectpicker" id="region-select" data-live-search="true">
+                <option selected value="all">All</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+              <label for="type-select">Type</label>
+              <select class="form-control selectpicker" id="type-select" data-live-search="true">
+                <option selected value="all">All</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-12 col-lg-4">
+            <div class="form-group">
+              <label for="size-select">Size</label>
+              <select class="form-control selectpicker" id="size-select" data-live-search="true">
+                <option selected value="all">All</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <table class="col-xs-12 table">
+            <thead>
             <tr>
               <th>Region</th>
               <th>Type</th>
               <th>Size</th>
               <th>Price</th>
             </tr>
-          </thead>
-          <tbody id="pricing-data">
+            </thead>
+            <tbody id="pricing-data">
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- build:js scripts/vendor.js -->
-  <!-- bower:js -->
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
-  <!-- build:js scripts/plugins.js -->
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-  <!-- endbuild -->
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+    <!-- endbuild -->
 
-  <!-- build:js scripts/main.js -->
-  <script defer src="scripts/main.js"></script>
-  <!-- endbuild -->
-  <!-- script async defer src="https://spot-price.s3.amazonaws.com/spot.js">  </script -->
-</body>
-
+    <!-- build:js scripts/main.js -->
+    <script defer src="scripts/main.js"></script>
+    <!-- endbuild -->
+    <!-- script async defer src="https://spot-price.s3.amazonaws.com/spot.js">  </script -->
+  </body>
 </html>
