@@ -177,6 +177,9 @@ $(() => {
   const $type = $('#type-select');
   const $size = $('#size-select');
   const $currency = $('#currency-select');
+  const $data = $('#pricing-data');
+  let sortOrder = '';
+  let sortField = '';
 
   function loadData(data) {
     data.config.regions.forEach((region) => {
@@ -250,21 +253,68 @@ $(() => {
     });
   }
 
+  function sortRows(field, isAsc) {
+    const $rows = $data.children('tr');
+
+    $rows.sort(function(a, b) {
+      let prevVal = $(a).data(field);
+      let nextVal = $(b).data(field);
+
+      if (field === 'price') {
+        if (prevVal === 'N/A*' || nextVal === 'prevVal') return 1;
+        if (isAsc) return prevVal - nextVal;
+        return nextVal - prevVal;
+      }
+
+      if (isAsc) return prevVal.localeCompare(nextVal)
+      return nextVal.localeCompare(prevVal);
+    });
+
+    $data.append($rows);
+  }
+
   function callback(data) {
     loadData(data);
     const uniqueValues = unique(pricingData, ['region', 'type', 'size']);
     render(uniqueValues);
 
-    const $data = $('#pricing-data');
+    $('#table-headers th > a').on('click', function() {
+      const where = createFilter();
+      const records = filter(pricingData, where);
+      const field = $(this).data('field');
+      const icon = $(this).find('span');
+      const isAsc = icon.hasClass('glyphicon-sort') || icon.hasClass('glyphicon-sort-by-attributes-alt');
+
+      sortRows(field, isAsc);
+
+      icon.removeClass('glyphicon-sort')
+        .removeClass(!isAsc ? 'glyphicon-sort-by-attributes' : 'glyphicon-sort-by-attributes-alt')
+        .addClass(isAsc ? 'glyphicon-sort-by-attributes' : 'glyphicon-sort-by-attributes-alt');
+
+      $(this).siblings()
+        .find('span')
+        .not(this)
+        .removeClass('glyphicon-sort-by-attributes')
+        .removeClass('glyphicon-sort-by-attributes-alt')
+        .addClass('glyphicon-sort');
+
+      sortField = field;
+      sortOrder = isAsc;
+    });
+
+
     $('.data-filter').on('change', () => {
       $data.empty();
       const where = createFilter();
       const records = filter(pricingData, where);
       const factor = $currency.val() === 'USD' ? 1 : rates[$currency.val()];
+
       records.forEach((record) => {
         const price = parseFloat(record.price) * factor;
-        $data.append(`<tr><td>${record.region}</td><td>${record.type}</td><td>${record.size}</td><td>${mapCodeToSymbol($currency.val())}${price.toFixed(4)}</td></tr>`);
+        $data.append(`<tr data-region=${record.region} data-type=${record.type} data-size=${record.size} data-price=${record.price}><td>${record.region}</td><td>${record.type}</td><td>${record.size}</td><td>${mapCodeToSymbol($currency.val())}${price.toFixed(4)}</td></tr>`);
       });
+
+      if (sortField && sortOrder) sortRows(sortField, sortOrder)
     });
   }
 
