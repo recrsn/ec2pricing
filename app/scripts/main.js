@@ -272,7 +272,7 @@ $(() => {
   window.callback = callback;
   // load ec2 pricing data
   $.get('https://api.fixer.io/latest?base=USD', (data) => {
-    rates = data.rates;
+    rates = data.rates; // eslint-disable-line
     Object.keys(data.rates).forEach((currency) => {
       $currency.append(`<option  value="${currency}">${currency}</option>`);
     });
