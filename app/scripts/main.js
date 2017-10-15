@@ -1,6 +1,6 @@
 $(function () {
   let pricingData = [];
-  let sortOrder = false; // false means the sorting will be in Increasing order and true will be vice versa
+  let sortDescending = false;
   let $sortIcon = $('#sortIcon');
   let $region = $('#region-select');
   let $type = $('#type-select');
@@ -65,14 +65,14 @@ $(function () {
   };
 
   $sortIcon.on("click", () => {
-    if(!sortOrder) {
-      $sortIcon.removeClass('glyphicon-triangle-top');
-      $sortIcon.addClass('glyphicon-triangle-bottom');
-      sortOrder = true;
+    if(!sortDescending) {
+      $sortIcon.removeClass('arrowUp');
+      $sortIcon.addClass('arrowDown');
+      sortDescending = true;
     } else {
-      $sortIcon.removeClass('glyphicon-triangle-bottom');
-      $sortIcon.addClass('glyphicon-triangle-top');
-      sortOrder = false;
+      $sortIcon.removeClass('arrowDown');
+      $sortIcon.addClass('arrowUp');
+      sortDescending = false;
     }
     if($data.html()) {
       changeData();
@@ -89,26 +89,14 @@ $(function () {
         imagData.push(record);
       }
     }
-    if(!sortOrder) {
-      for(let i=0; i<realData.length - 1; i++) {
-        for(let j=0; j<realData.length - i -1; j++) {
-          if(parseFloat(realData[j].price) > parseFloat(realData[j+1].price)) {
-            let tmp = realData[j];
-            realData[j] = realData[j+1];
-            realData[j+1] = tmp;
-          }
-        }
-      }
+    if(!sortDescending) {
+      realData = realData.sort((a,b) => {
+        return parseFloat(a.price) - parseFloat(b.price)
+      })
     } else {
-      for(let i=0; i<realData.length - 1; i++) {
-        for(let j=0; j<realData.length - i -1; j++) {
-          if(parseFloat(realData[j].price) < parseFloat(realData[j+1].price)) {
-            let tmp = realData[j];
-            realData[j] = realData[j+1];
-            realData[j+1] = tmp;
-          }
-        }
-      }
+      realData = realData.sort((a,b) => {
+        return parseFloat(b.price) - parseFloat(a.price)
+      })
     }
     let data = realData.concat(imagData);
     return data;

@@ -4,6 +4,27 @@ $icon-font-path: '../fonts/';
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+.arrowDown {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+}
+
+.arrowUp {
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+
+#sortIcon {
+  writing-mode: vertical-rl;
+  position: relative;
+  bottom: 2px;
+  cursor: pointer;
+}
+
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
