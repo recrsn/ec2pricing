@@ -1,13 +1,8 @@
 import React from 'react';
 import './App.css';
 import useAsync from './hooks/use-async';
-import { loadData, PriceInfo } from './api';
+import { loadData } from './api';
 import PricingTable from './PricingTable';
-
-type PricingTableProps = {
-  data: PriceInfo[]
-}
-
 
 function App() {
   const { loading, error, result } = useAsync(loadData);
