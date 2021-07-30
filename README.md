@@ -1,55 +1,46 @@
-# EC2 Pricing Info
+# Getting Started with Create React App
 
-Shows an easy-to-compare view of pricing info of Amazon Web Services EC2 instances across various AWS regions.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Setting up for development
+## Available Scripts
 
-### Pre-requisites
+In the project directory, you can run:
 
- - [NodeJS](https://nodejs.org)
+### `npm start`
 
-This project uses [npm](https://www.npmjs.com/) and [bower](https://bower.io/) for dependency management
-and [gulp](https://gulpjs.com) as the task-runner. 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-To install all dependencies:
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-````
-npm install && bower install
-```` 
+### `npm test`
 
-### Running in dev mode
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-````
-gulp serve
-````
+### `npm run build`
 
-## Deploying a prod build
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-````
-gulp build
-````
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-This will generate an optimized build inside `dist` directory. You can deploy the contents of this directory to a static
-web server.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Roadmap
+### `npm run eject`
 
-### Features
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-  - [x] Show pricing info for spot instances.
-  - [ ] Leverage the new AWS Pricing API to show prices for on-demand instances.
-  - [ ] Currency conversion.
-  - [ ] Show a graph depicting trends in spot pricing.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### Development
-  - [ ] Use webpack.
-  - [ ] Use npm instead of bower.
-  - [ ] A better frontend.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## License
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-MIT License
+## Learn More
 
-Copyright (c) 2017 Amitosh Swain Mahapatra
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-See detailed terms in [LICENSE](LICENSE)
+To learn React, check out the [React documentation](https://reactjs.org/).

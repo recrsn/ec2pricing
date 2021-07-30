@@ -1,0 +1,3 @@
+.pricing-table-row:nth-child(even) {
+  @apply bg-gray-50;
+}
