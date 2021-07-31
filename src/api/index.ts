@@ -1,6 +1,6 @@
 import fetchJsonp from 'fetch-jsonp'
 
-const SPOT_PRICE_URL = 'https://spot-price.s3.amazonaws.com/spot.js'
+const SPOT_PRICE_URL = '/.netlify/functions/spot-pricing'
 
 type SpotPriceInfoResponse = {
   config: {
@@ -31,9 +31,7 @@ export type PriceInfo = {
 }
 
 export async function loadData(): Promise<PriceInfo[]> {
-  const data = await (await fetchJsonp(SPOT_PRICE_URL, {
-    jsonpCallbackFunction: 'callback'
-  })).json<SpotPriceInfoResponse>();
+  const data: SpotPriceInfoResponse = await (await fetch(SPOT_PRICE_URL)).json();
   const pricingData: PriceInfo[] = [];
   data.config.regions.forEach((region) =>
     region.instanceTypes.forEach((instanceType) =>

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { PriceInfo } from './api';
 import { useTable, Column, useSortBy } from 'react-table';
+import { SortAscendingIcon, SortDescendingIcon } from '@heroicons/react/outline';
 
 import './PricingTable.css';
 
@@ -53,14 +54,16 @@ export default function PricingTable({ data }: PricingTableProps) {
                 <tr {...headerGroup.getHeaderGroupProps()} >
                   {headerGroup.headers.map(column => (
                     <th {...column.getHeaderProps(column.getSortByToggleProps())} scope="col" className="px-6 py-3 text-sm text-bold font-medium text-gray-500 uppercase tracking-wider">
-                      {column.render('Header')}
-                      <span>
-                        {column.isSorted
-                          ? column.isSortedDesc
-                            ? ' 🔽'
-                            : ' 🔼'
-                          : ''}
-                      </span>
+                      <div className="flex flex-row items-center justify-center">
+                        <span className="mr-1">{column.render('Header')}</span>
+                        <span className="h-4 w-4">
+                          {column.isSorted
+                            ? column.isSortedDesc
+                              ? <SortDescendingIcon className="h-4 w-4" />
+                              : <SortAscendingIcon className="h-4 w-4" />
+                            : <></>}
+                        </span>
+                      </div>
                     </th>
                   ))}
                 </tr>
